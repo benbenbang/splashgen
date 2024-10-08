@@ -1,11 +1,12 @@
+# standard library
 import pathlib
 import shutil
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from os import path
 
+# pypi/conda library
 from jinja2 import Environment, FileSystemLoader
-
 
 _assigned_component = None
 
@@ -27,8 +28,11 @@ class Component(ABC):
         uri = f"{path.basename(dest)}"
         return uri
 
-    def into_template(self, template_file: str, extras: dict = None):
-        jinja = Environment(loader=FileSystemLoader(searchpath=path.dirname(template_file)), autoescape=False)
+    def into_template(self, template_file: str, extras: dict | None = None):
+        jinja = Environment(
+            loader=FileSystemLoader(searchpath=path.dirname(template_file)),
+            autoescape=False,
+        )
         tmpl = jinja.get_template(path.basename(template_file))
         data = self.__dict__
         if extras is None:

@@ -1,3 +1,6 @@
-from .SplashSite import SplashSite
-from .CTAButton import CTAButton
-from .form import Form, TextInput, EmailInput, SelectInput
+# plugins
+from splashgen.components.CTAButton import CTAButton
+from splashgen.components.form import EmailInput, Form, SelectInput, TextInput
+from splashgen.components.SplashSite import SplashSite
+
+__all__ = ["SplashSite", "CTAButton", "Form", "TextInput", "EmailInput", "SelectInput"]

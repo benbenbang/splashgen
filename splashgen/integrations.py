@@ -1,11 +1,14 @@
-from typing import Tuple
+# standard library
+from os import path
+from typing import tuple
 from urllib.parse import ParseResult, urlparse
 
-from os import path
+# pypi/conda library
 import query_string
-import urlexpander
 
+# plugins
 from splashgen import Component
+from splashgen.urlexpander import expand
 
 
 class MailchimpSignup(Component):
@@ -21,14 +24,15 @@ class MailchimpSignup(Component):
         self.button_text = button_text
 
     def render(self) -> str:
-        template_file = path.join(path.dirname(__file__), "..", "templates", "mailchimp_signup.html.jinja")
+        template_file = path.join(
+            path.dirname(__file__), "..", "templates", "mailchimp_signup.html.jinja"
+        )
         return self.into_template(template_file=template_file)
 
-    def _parse_signup_url(self, url: str) -> Tuple[ParseResult, dict]:
-        expanded_url = self._url_cache.get(url, urlexpander.expand(url))
+    def _parse_signup_url(self, url: str) -> tuple[ParseResult, dict]:
+        expanded_url = self._url_cache.get(url, expand(url))
         if "list-manage.com/subscribe" not in expanded_url:
-            raise ValueError(
-                "It doesn't look like you gave us a MailChimp URL form")
+            raise ValueError("It doesn't look like you gave us a MailChimp URL form")
         ps = urlparse(expanded_url)
         ps = ps._replace(path=f"{ps.path}/post")
         qs = query_string.parse(ps.query)

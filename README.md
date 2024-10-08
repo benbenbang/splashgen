@@ -19,7 +19,7 @@ Splashgen. Don't waste time with no-code tools when you already know how to
 code.
 """
 site.call_to_action = CTAButton(
-    "https://github.com/true3dco/splashgen", "View on GitHub")
+    "https://github.com/benbenbang/splashgen", "View on GitHub")
 
 launch(site)
 ```
@@ -40,9 +40,9 @@ templates all over the place, and want to share it with you!
 
 ## Installation
 
-> **NOTE**: You will need Python 3.7+
+> **NOTE**: You will need Python 3.10+
 
-`pip install splashgen`
+`pip install splashgenlp`
 
 ## Usage
 
@@ -156,7 +156,7 @@ and have Netlify build and deploy the site for you.
 1. Create a repository which will host your site script.
 1. Write your site script, e.g. `website.py`, at the root of your repo
 1. From your repo root, run `echo splashgen > requirements.txt`
-1. From your repo root, run `echo 3.7 > runtime.txt`
+1. From your repo root, run `echo 3.10 > runtime.txt`
 1. `git push` to your repo
 1. In the Netlify console, create a new site from git
 1. Add the repo that you just created
@@ -168,7 +168,7 @@ and have Netlify build and deploy the site for you.
 > the site. In that case, change `splashgen` in `requirements.txt` to `splashgen==0.0.23`, or whatever the current version
 > you have installed is.
 
-You can see an example of a site deployed to Netlify on [splashgen's splash pages's repo](https://github.com/true3dco/splashgen.sh-site)
+You can see an example of a site deployed to Netlify on [splashgen's splash pages's repo](https://github.com/benbenbang/splashgen.sh-site)
 
 ### Opting out of analytics
 
